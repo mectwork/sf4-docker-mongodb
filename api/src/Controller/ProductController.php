@@ -13,6 +13,8 @@ use App\Document\Product;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class ProductController extends Controller
@@ -33,6 +35,28 @@ class ProductController extends Controller
         $dm->flush();
 
         return new Response('Created product id: ' . $product->getId());
+    }
+
+    /**
+     * @Route("add-product-json-data")
+     * @param Request $request
+     *
+     * @return JsonResponse
+     */
+    public function addProductJsonData(Request $request)
+    {
+        $data = (array)json_decode($request->getContent());
+
+        $product = new Product();
+        $product->setName($data['name']);
+        $product->setPrice($data['price']);
+
+        /** @var DocumentManager $dm */
+        $dm = $this->get('doctrine_mongodb')->getManager();
+        $dm->persist($product);
+        $dm->flush();
+
+        return new JsonResponse($product->getId(),201);
     }
 
 }
