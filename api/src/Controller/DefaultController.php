@@ -18,7 +18,7 @@ class DefaultController
 
     public function index()
     {
-        return new Response("<h1>I a fresh Symfony 4 Installation</h1>");
+        return new Response("<h1>I'm a fresh Symfony 4 Installation</h1>");
     }
 
     /**
