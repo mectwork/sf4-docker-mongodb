@@ -82,9 +82,9 @@ class Product implements \JsonSerializable
     function jsonSerialize()
     {
         $data = [
-            'id' => $this->id,
-            'name' => $this->name,
-            'price' => $this->price
+            'id'    => $this->id,
+            'name'  => $this->name,
+            'price' => $this->price,
         ];
 
         return $data;

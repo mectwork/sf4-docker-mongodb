@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Document\Product;
@@ -29,7 +30,7 @@ class ProductController extends Controller
         $dm->persist($product);
         $dm->flush();
 
-        return new Response('Created product id: ' . $product->getId());
+        return new Response('Created product id: '.$product->getId());
     }
 
     /**
@@ -62,8 +63,8 @@ class ProductController extends Controller
     {
         /** @var Repository $repository */
         $repository = $this->get('doctrine_mongodb')
-            ->getManager()
-            ->getRepository('App:Product');
+                           ->getManager()
+                           ->getRepository('App:Product');
 
         $products = $repository->findAll();
 
@@ -74,6 +75,7 @@ class ProductController extends Controller
     /**
      * @Route("/product-remove")
      * @param Request $request
+     *
      * @return JsonResponse
      */
     public function removeProduct(Request $request)

@@ -24,11 +24,12 @@ class DefaultController
     /**
      * @Route("/hello")
      * @param $name
+     *
      * @return Response
      */
     public function hello($name)
     {
-        return new Response("Hello " . $name);
+        return new Response("Hello ".$name);
     }
 
     /**
@@ -39,6 +40,6 @@ class DefaultController
     {
         $date = $this->service->theDate();
 
-        return new Response("The date is: " . $date);
+        return new Response("The date is: ".$date);
     }
 }
