@@ -22,7 +22,7 @@ class DefaultController
     }
 
     /**
-     * @Route("/hello")
+     * @Route("/hello/{name}")
      * @param $name
      *
      * @return Response
